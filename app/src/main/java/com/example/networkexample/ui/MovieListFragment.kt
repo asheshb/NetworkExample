@@ -11,6 +11,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 
 import com.example.networkexample.R
+import com.example.networkexample.data.ErrorCode
+import com.example.networkexample.data.Status
 import kotlinx.android.synthetic.main.fragment_movie_list.*
 
 /**
@@ -54,8 +56,30 @@ class MovieListFragment : Fragment() {
             }
         })
 
-
+        viewModel.loadingStatus.observe(viewLifecycleOwner, Observer {loadingStatus ->
+            when {
+                loadingStatus?.status == Status.LOADING -> {
+                    loading_status.visibility = View.VISIBLE
+                    status_error.visibility = View.INVISIBLE
+                }
+                loadingStatus?.status == Status.SUCCESS -> {
+                    loading_status.visibility = View.INVISIBLE
+                    status_error.visibility = View.INVISIBLE
+                }
+                loadingStatus?.status == Status.ERROR -> {
+                    loading_status.visibility = View.INVISIBLE
+                    showErrorMessage(loadingStatus.errorCode, loadingStatus.message)
+                    status_error.visibility = View.VISIBLE
+                }
+            }
+        })
     }
 
-
+    private fun showErrorMessage(errorCode: ErrorCode?, message: String?) {
+        when (errorCode) {
+            ErrorCode.NO_DATA -> status_error.text = getString(R.string.error_no_data)
+            ErrorCode.NETWORK_ERROR -> status_error.text = getString(R.string.error_network)
+            ErrorCode.UNKNOWN_ERROR -> status_error.text = getString(R.string.error_unknown, message)
+        }
+    }
 }
