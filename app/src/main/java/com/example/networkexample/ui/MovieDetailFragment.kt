@@ -8,12 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.bumptech.glide.Glide
 
 import com.example.networkexample.R
 import com.example.networkexample.data.Movie
+import com.example.networkexample.data.network.TmdbService
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
-import kotlinx.android.synthetic.main.list_item.*
-import kotlinx.android.synthetic.main.list_item.movie_title
+
+
 
 /**
  * A simple [Fragment] subclass.
@@ -50,7 +52,14 @@ class MovieDetailFragment : Fragment() {
 
 
     private fun setData(movie: Movie){
-        //TODO setup all data
+        Glide.with(activity!!)
+            .load(TmdbService.POSTER_BASE_URL + movie.posterPath)
+            .error(R.drawable.poster_placeholder)
+            .into(movie_poster)
+
+        Glide.with(activity!!)
+            .load(TmdbService.POSTER_BASE_URL + movie.backdropPath)
+            .into(movie_backdrop)
 
         movie_title.text = movie.title
         movie_overview.text = movie.overview

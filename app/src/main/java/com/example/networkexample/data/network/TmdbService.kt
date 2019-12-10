@@ -18,6 +18,8 @@ interface TmdbService{
 
     companion object {
         private const val BASE_URL = "https://api.themoviedb.org/3/"
+        const val POSTER_BASE_URL = "https://image.tmdb.org/t/p/w185"
+
 
         // Add api key to every request
         private val interceptor = Interceptor { chain ->
