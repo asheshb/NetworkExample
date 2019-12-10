@@ -40,7 +40,6 @@ class MovieListFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         with(movie_list){
-            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity)
             adapter = MovieAdapter {
                 findNavController().navigate(
                     MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment(it)
@@ -50,6 +49,9 @@ class MovieListFragment : Fragment() {
 
         viewModel.movies.observe(viewLifecycleOwner, Observer {
             (movie_list.adapter as MovieAdapter).submitList(it)
+            if(it.isEmpty()){
+                viewModel.fetchFromNetwork()
+            }
         })
 
 

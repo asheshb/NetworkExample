@@ -25,6 +25,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildTypes.each {
+        it.buildConfigField 'String', 'TMDB_API_KEY', TMDB_API_KEY
+    }
+
+    compileOptions {
+        targetCompatibility = "8"
+        sourceCompatibility = "8"
+    }
 }
 
 androidExtensions {
@@ -54,4 +63,8 @@ dependencies {
     //LiveData and ViewModel
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.1.0'
+
+    //Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.7.0")
+    implementation "com.squareup.retrofit2:converter-gson:2.7.0"
 }

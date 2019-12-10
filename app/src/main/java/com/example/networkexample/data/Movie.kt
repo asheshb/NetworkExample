@@ -3,6 +3,7 @@ package com.example.networkexample.data
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 import java.util.*
 
 //https://developers.themoviedb.org/3/discover/movie-discover
@@ -16,13 +17,16 @@ data class Movie(
     val title: String,
 
     @ColumnInfo(name = "poster_path")
+    @SerializedName("poster_path")
     val posterPath: String,
 
     @ColumnInfo(name = "backdrop_path")
+    @SerializedName("backdrop_path")
     val backdropPath: String,
 
     val overview: String,
 
     @ColumnInfo(name = "release_date")
+    @SerializedName("release_date")
     val releaseDate: Date
 )
