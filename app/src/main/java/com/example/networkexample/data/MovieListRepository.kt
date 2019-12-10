@@ -11,12 +11,4 @@ class MovieListRepository(context: Application){
     fun getMovies(): LiveData<List<Movie>> {
         return movieListDao.getMovies()
     }
-
-    suspend fun fetchFromNetwork(){
-        val result = tmdbService.getMovies()
-        if(result.isSuccessful){
-            val movieList = result.body()
-            movieList?.let{ movieListDao.insertMovies(it.results) }
-        }
-    }
 }

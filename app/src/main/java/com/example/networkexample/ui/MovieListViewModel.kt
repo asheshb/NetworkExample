@@ -14,13 +14,4 @@ class MovieListViewModel(application: Application): AndroidViewModel(application
         MovieListRepository(application)
 
     val movies: LiveData<List<Movie>> = repo.getMovies()
-
-    fun fetchFromNetwork(){
-        viewModelScope.launch {
-            withContext(Dispatchers.IO){
-                repo.fetchFromNetwork()
-            }
-
-        }
-    }
 }
