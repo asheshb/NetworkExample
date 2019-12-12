@@ -26,7 +26,7 @@ class MovieListViewModel(application: Application): AndroidViewModel(application
         _loadingStatus.value = LoadingStatus.loading()
         viewModelScope.launch {
             _loadingStatus.value =  withContext(Dispatchers.IO){
-                //delay(5000)
+                delay(5000)
                 repo.fetchFromNetwork()
             }
         }
