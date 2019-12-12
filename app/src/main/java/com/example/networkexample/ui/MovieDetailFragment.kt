@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.networkexample.R
 import com.example.networkexample.data.Movie
 import com.example.networkexample.data.network.TmdbService
+import com.example.networkexample.readableFormat
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
 
 
@@ -63,5 +64,7 @@ class MovieDetailFragment : Fragment() {
 
         movie_title.text = movie.title
         movie_overview.text = movie.overview
+
+        movie_release_date.text = movie.releaseDate.readableFormat()
     }
 }
