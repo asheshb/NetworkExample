@@ -54,5 +54,7 @@ class MovieDetailFragment : Fragment() {
 
         movie_title.text = movie.title
         movie_overview.text = movie.overview
+
+        movie_release_date.text = movie.releaseDate.readableFormat()
     }
 }
