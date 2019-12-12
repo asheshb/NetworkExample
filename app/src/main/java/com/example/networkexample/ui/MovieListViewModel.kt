@@ -36,6 +36,6 @@ class MovieListViewModel(application: Application): AndroidViewModel(application
         viewModelScope.launch(Dispatchers.IO) {
             repo.deleteAllData()
         }
-        //fetchFromNetwork()
+        fetchFromNetwork()
     }
 }
