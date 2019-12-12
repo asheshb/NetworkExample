@@ -58,7 +58,7 @@ class MovieDetailFragment : Fragment() {
             .into(movie_poster)
 
         Glide.with(activity!!)
-            .load(TmdbService.POSTER_BASE_URL + movie.backdropPath)
+            .load(TmdbService.BACKDROP_BASE_URL + movie.backdropPath)
             .into(movie_backdrop)
 
         movie_title.text = movie.title
