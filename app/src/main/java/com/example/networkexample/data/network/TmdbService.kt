@@ -12,7 +12,8 @@ import retrofit2.http.GET
 
 interface TmdbService{
 
-    @GET("discover/movie?certification_country=US&adult=false&vote_count.gte=100&with_original_language=en&sort_by=primary_release_date.desc")
+    @GET("discover/movie?certification_country=US&adult=false&vote_count.gte=100&" +
+            "with_original_language=en&sort_by=primary_release_date.desc")
     suspend fun getMovies(): Response<TmdbMovieList>
 
 
