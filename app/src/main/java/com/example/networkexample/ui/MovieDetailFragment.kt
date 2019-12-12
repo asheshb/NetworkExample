@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.networkexample.R
 import com.example.networkexample.data.Movie
 import com.example.networkexample.data.network.TmdbService
+import com.example.networkexample.readableFormat
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
 
 
@@ -58,10 +59,12 @@ class MovieDetailFragment : Fragment() {
             .into(movie_poster)
 
         Glide.with(activity!!)
-            .load(TmdbService.POSTER_BASE_URL + movie.backdropPath)
+            .load(TmdbService.BACKDROP_BASE_URL + movie.backdropPath)
             .into(movie_backdrop)
 
         movie_title.text = movie.title
         movie_overview.text = movie.overview
+
+        movie_release_date.text = movie.releaseDate.readableFormat()
     }
 }
