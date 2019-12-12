@@ -40,7 +40,6 @@ class MovieListFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         with(movie_list){
-            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity)
             adapter = MovieAdapter {
                 findNavController().navigate(
                     MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment(it)
