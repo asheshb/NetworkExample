@@ -42,10 +42,12 @@ class MovieAdapter(private val listener: (Long) -> Unit):
 
         fun bind(movie: Movie){
             with(movie){
+
                 Glide.with(containerView)
                     .load(TmdbService.POSTER_BASE_URL + movie.posterPath)
                     .error(R.drawable.poster_placeholder)
                     .into(movie_poster)
+
                 movie_title.text = movie.title
             }
         }
