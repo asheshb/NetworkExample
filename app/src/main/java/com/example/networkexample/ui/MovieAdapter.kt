@@ -40,7 +40,7 @@ class MovieAdapter(private val listener: (Long) -> Unit):
 
         fun bind(movie: Movie){
             with(movie){
-                //TODO movie_post with image
+                //TODO movie_poster with image
                 movie_title.text = movie.title
             }
         }

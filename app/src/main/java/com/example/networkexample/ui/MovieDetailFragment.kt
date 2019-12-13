@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 
 import com.example.networkexample.R
 import com.example.networkexample.data.Movie
+import com.example.networkexample.readableFormat
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
 import kotlinx.android.synthetic.main.list_item.*
 import kotlinx.android.synthetic.main.list_item.movie_title
