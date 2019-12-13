@@ -1,8 +1,9 @@
 package com.example.networkexample.data
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.LiveData
+import com.example.networkexample.data.network.ErrorCode
+import com.example.networkexample.data.network.LoadingStatus
 import com.example.networkexample.data.network.TmdbService
 import java.lang.Exception
 import java.net.UnknownHostException
@@ -25,11 +26,14 @@ class MovieListRepository(context: Application){
                 movieList?.let { movieListDao.insertMovies(it.results) }
                 LoadingStatus.success()
             } else{
-                LoadingStatus.error(ErrorCode.NO_DATA)
+                LoadingStatus.error(
+                    ErrorCode.NO_DATA)
             }
         } catch(ex: UnknownHostException){
-            LoadingStatus.error(ErrorCode.NETWORK_ERROR)
+            LoadingStatus.error(
+                ErrorCode.NETWORK_ERROR)
         } catch(ex: Exception){
-            LoadingStatus.error(ErrorCode.UNKNOWN_ERROR, ex.message)
+            LoadingStatus.error(
+                ErrorCode.UNKNOWN_ERROR, ex.message)
         }
 }

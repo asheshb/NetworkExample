@@ -12,10 +12,6 @@ import retrofit2.http.GET
 
 interface TmdbService{
 
-    @GET("discover/movie?certification_country=US&adult=false&vote_count.gte=100&with_original_language=en&sort_by=primary_release_date.desc")
-    suspend fun getMovies(): Response<TmdbMovieList>
-
-
     companion object {
         private const val BASE_URL = "https://api.themoviedb.org/3/"
         const val POSTER_BASE_URL = "https://image.tmdb.org/t/p/w185"
@@ -53,4 +49,9 @@ interface TmdbService{
             return retrofitService
         }
     }
+
+    @GET("discover/movie?certification_country=US&adult=false&vote_count.gte=100&" +
+            "with_original_language=en&sort_by=primary_release_date.desc")
+    suspend fun getMovies(): Response<TmdbMovieList>
+
 }

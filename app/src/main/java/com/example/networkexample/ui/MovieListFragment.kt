@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 
 import com.example.networkexample.R
-import com.example.networkexample.data.ErrorCode
-import com.example.networkexample.data.Status
+import com.example.networkexample.data.network.ErrorCode
+import com.example.networkexample.data.network.Status
 import kotlinx.android.synthetic.main.fragment_movie_list.*
 
 /**

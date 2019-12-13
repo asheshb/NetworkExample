@@ -2,7 +2,7 @@ package com.example.networkexample.ui
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.example.networkexample.data.LoadingStatus
+import com.example.networkexample.data.network.LoadingStatus
 import com.example.networkexample.data.Movie
 import com.example.networkexample.data.MovieListRepository
 import kotlinx.coroutines.Dispatchers
@@ -26,7 +26,7 @@ class MovieListViewModel(application: Application): AndroidViewModel(application
         _loadingStatus.value = LoadingStatus.loading()
         viewModelScope.launch {
             _loadingStatus.value =  withContext(Dispatchers.IO){
-                delay(5000)
+                //delay(5000)
                 repo.fetchFromNetwork()
             }
         }
